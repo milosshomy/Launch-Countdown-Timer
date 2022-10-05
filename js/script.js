@@ -4,44 +4,47 @@ const days = document.querySelectorAll(".days");
 const hours = document.querySelectorAll(".hours");
 const minutes = document.querySelectorAll(".minutes");
 const seconds = document.querySelectorAll(".seconds");
-
 /* Handle timer */
 
 /* Seconds */
 
-seconds.forEach((second) => {
-  let value = Number(second.textContent);
-  setInterval(function () {
+function handleSeconds(sec) {
+  let value = Number(sec.textContent);
+  setInterval(() => {
     if (value === 0) {
       value = 59;
-      second.textContent = value;
+      sec.textContent = value;
     } else {
       value -= 1;
-      second.textContent = value;
+      sec.textContent = value;
     }
   }, 1000);
-});
+}
+
+seconds.forEach((second) => handleSeconds(second));
 
 /* Minutes */
 
-minutes.forEach((minute) => {
-  let value = Number(minute.textContent);
-  setInterval(function () {
+function handleMinutes(min) {
+  let value = Number(min.textContent);
+  setInterval(() => {
     if (value === 0) {
       value = 59;
-      minute.textContent = value;
+      min.textContent = value;
     } else {
       value -= 1;
-      minute.textContent = value;
+      min.textContent = value;
     }
   }, 1000 * 60);
-});
+}
+
+minutes.forEach((minute) => handleMinutes(minute));
 
 /* Hours */
 
-hours.forEach((hour) => {
+function handleHours(hour) {
   let value = Number(hour.textContent);
-  setInterval(function () {
+  setInterval(() => {
     if (value === 0) {
       value = 23;
       hour.textContent = value;
@@ -50,19 +53,22 @@ hours.forEach((hour) => {
       hour.textContent = value;
     }
   }, 1000 * 3600);
-});
+}
+
+hours.forEach((hour) => handleHours(hour));
 
 /* Days */
 
-days.forEach((day) => {
+function handleDays(day) {
   let value = Number(day.textContent);
-  setInterval(function () {
+  setInterval(() => {
     if (value === 0) {
       alert("We're launching!");
-      return;
     } else {
       value -= 1;
       day.textContent = value;
     }
   }, 1000 * 86400);
-});
+}
+
+days.forEach((day) => handleDays(day));
